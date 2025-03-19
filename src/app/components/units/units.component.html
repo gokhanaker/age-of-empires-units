@@ -1,1 +1,39 @@
-<p>units works!</p>
+<div *ngIf="loading; else showUnits">
+  <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #showUnits>
+  <div *ngIf="unitList as units">
+    <table mat-table [dataSource]="unitList" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let unit">{{ unit.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let unit">{{ unit.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef>Age</th>
+        <td mat-cell *matCellDef="let unit">{{ unit.age }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cost">
+        <th mat-header-cell *matHeaderCellDef>Cost</th>
+        <td mat-cell *matCellDef="let unit">
+          <ng-container *ngIf="unit.cost; else noCost">
+            <span *ngFor="let key of objectKeys(unit.cost)">
+              {{ key }}: {{ unit.cost[key] }}
+            </span>
+          </ng-container>
+          <ng-template #noCost>N/A</ng-template>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</ng-template>
