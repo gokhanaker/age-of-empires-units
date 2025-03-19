@@ -7,10 +7,7 @@ export const selectAllUnits = createSelector(
   selectUnitState,
   (state) => state.units
 );
-export const selectLoading = createSelector(
-  selectUnitState,
-  (state) => state.loading
-);
+
 export const selectError = createSelector(
   selectUnitState,
   (state) => state.error

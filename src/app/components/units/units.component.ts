@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { UnitState } from '../../state/unit.state';
-import {
-  selectAllUnits,
-  selectLoading,
-  selectError,
-} from '../../state/unit.selectors';
+import { selectAllUnits, selectError } from '../../state/unit.selectors';
 import { UnitService } from '../../services/unit.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { Unit } from '../../models/unit.model';
+import { Age, AGE_LIST } from '../../models/ages.model';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'units',
@@ -21,14 +20,20 @@ import { Unit } from '../../models/unit.model';
     MatProgressSpinnerModule,
     MatCardModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatSelect,
+    MatOption,
   ],
   templateUrl: './units.component.html',
   styleUrl: './units.component.scss',
 })
 export class UnitsComponent implements OnInit {
-  loading: boolean = false;
+  allUnitList: Unit[] = [];
   unitList: Unit[] = [];
+
   error: any = null;
+  selectedAge: Age = Age.All;
+  ages = Object.values(Age);
 
   displayedColumns: string[] = ['id', 'name', 'age', 'cost'];
 
@@ -45,15 +50,30 @@ export class UnitsComponent implements OnInit {
     this.unitService.fetchUnits();
 
     this.store.select(selectAllUnits).subscribe((data: any) => {
-      this.unitList = data.units;
-    });
-
-    this.store.select(selectLoading).subscribe((loading: any) => {
-      this.loading = loading;
+      this.allUnitList = data.units;
+      this.unitList = this.allUnitList;
     });
 
     this.store.select(selectError).subscribe((error: any) => {
       this.error = error;
     });
+  }
+
+  onAgeChange(selectedAge: Age) {
+    this.selectedAge = selectedAge;
+    this.filterUnitsByAge();
+  }
+
+  filterUnitsByAge() {
+    if (this.selectedAge === Age.All) {
+      this.unitList = this.allUnitList;
+    } else {
+      // Displaying the units if it can be created by selected age or its previous ages if exists
+      const ageIndex = AGE_LIST.indexOf(this.selectedAge);
+      this.unitList = this.allUnitList.filter((unit) => {
+        const unitAgeIndex = AGE_LIST.indexOf(unit.age);
+        return unitAgeIndex <= ageIndex;
+      });
+    }
   }
 }

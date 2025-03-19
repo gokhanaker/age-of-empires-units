@@ -1,9 +1,19 @@
-<div *ngIf="loading; else showUnits">
-  <mat-spinner></mat-spinner>
+<mat-form-field appearance="fill">
+  <mat-label>Select Age</mat-label>
+  <mat-select
+    [(value)]="selectedAge"
+    (selectionChange)="onAgeChange($event.value)"
+  >
+    <mat-option *ngFor="let age of ages" [value]="age">{{ age }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div *ngIf="error; else showUnits">
+  <h1>Error to display units!</h1>
 </div>
 
 <ng-template #showUnits>
-  <div *ngIf="unitList as units">
+  <div *ngIf="unitList && unitList.length">
     <table mat-table [dataSource]="unitList" class="mat-elevation-z8">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>ID</th>
