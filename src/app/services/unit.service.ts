@@ -37,18 +37,21 @@ export class UnitService {
 
     if (costFilters.food && costValues.food >= 0) {
       filteredUnits = filteredUnits.filter(
-        (unit) => unit.cost?.Food <= costValues.food
+        (unit) =>
+          unit.cost?.Food === undefined || unit.cost?.Food <= costValues.food
       );
     }
     if (costFilters.wood && costValues.wood >= 0) {
       filteredUnits = filteredUnits.filter(
-        (unit) => unit.cost?.Wood <= costValues.wood
+        (unit) =>
+          unit.cost?.Wood === undefined || unit.cost?.Wood <= costValues.wood
       );
     }
 
     if (costFilters.gold && costValues.gold >= 0) {
       filteredUnits = filteredUnits.filter(
-        (unit) => unit.cost?.Gold <= costValues.gold
+        (unit) =>
+          unit.cost?.Gold === undefined || unit.cost?.Gold <= costValues.gold
       );
     }
 
