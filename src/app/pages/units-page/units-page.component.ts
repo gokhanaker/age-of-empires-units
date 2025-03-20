@@ -16,6 +16,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '@components/navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'units-page',
@@ -32,6 +33,7 @@ import { NavbarComponent } from '@components/navbar/navbar.component';
     MatCheckboxModule,
     FormsModule,
     NavbarComponent,
+    RouterModule,
   ],
   templateUrl: './units-page.component.html',
   styleUrl: './units-page.component.scss',
