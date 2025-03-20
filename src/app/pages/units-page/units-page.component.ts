@@ -57,9 +57,9 @@ export class UnitsPageComponent implements OnInit {
 
   // Default values for cost filters
   costValues = {
-    food: 0,
-    wood: 0,
-    gold: 0,
+    food: 50,
+    wood: 50,
+    gold: 50,
   };
 
   displayedColumns: string[] = ['id', 'name', 'age', 'cost'];

@@ -23,7 +23,11 @@
       <p>Unit Cost:</p>
       <div class="cost-filter-container">
         <div class="cost-filter">
-          <mat-checkbox [(ngModel)]="costFilters.food">Food</mat-checkbox>
+          <mat-checkbox
+            [(ngModel)]="costFilters.food"
+            (input)="onCostFilterChange()"
+            >Food</mat-checkbox
+          >
           <div *ngIf="costFilters.food">
             <label>Food:</label>
             <input
@@ -38,7 +42,11 @@
         </div>
 
         <div class="cost-filter">
-          <mat-checkbox [(ngModel)]="costFilters.wood">Wood</mat-checkbox>
+          <mat-checkbox
+            [(ngModel)]="costFilters.wood"
+            (input)="onCostFilterChange()"
+            >Wood</mat-checkbox
+          >
           <div *ngIf="costFilters.wood">
             <label>Wood:</label>
             <input
@@ -53,7 +61,11 @@
         </div>
 
         <div class="cost-filter">
-          <mat-checkbox [(ngModel)]="costFilters.gold">Gold</mat-checkbox>
+          <mat-checkbox
+            [(ngModel)]="costFilters.gold"
+            (input)="onCostFilterChange()"
+            >Gold</mat-checkbox
+          >
           <div *ngIf="costFilters.gold">
             <label>Gold:</label>
             <input
