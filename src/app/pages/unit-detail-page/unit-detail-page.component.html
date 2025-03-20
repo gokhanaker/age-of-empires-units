@@ -1,33 +1,23 @@
 <navbar></navbar>
 
+<h1>{{ pageTitle }}</h1>
 <section class="unit-detail">
-  <h2>{{ pageTitle }}</h2>
   <p><strong>Id:</strong> {{ unit.id }}</p>
-  <p><strong>Name:</strong> {{ unit.name ? unit.name : "N/A" }}</p>
+  <p><strong>Name:</strong> {{ unit.name || "N/A" }}</p>
   <p>
     <strong>Description:</strong>
-    {{ unit.description ? unit.description : "N/A" }}
+    {{ unit.description || "N/A" }}
   </p>
-  <p><strong>Min. Required Age:</strong> {{ unit.age ? unit.age : "N/A" }}</p>
-  <p>
-    <strong>Wood Cost:</strong> {{ unit.cost?.Wood ? unit.cost?.Wood : "N/A" }}
-  </p>
-  <p>
-    <strong>Food Cost:</strong> {{ unit.cost?.Food ? unit.cost?.Food : "N/A" }}
-  </p>
-  <p>
-    <strong>Gold Cost:</strong> {{ unit.cost?.Gold ? unit.cost?.Gold : "N/A" }}
-  </p>
-  <p>
-    <strong>Build Time:</strong> {{ unit.build_time ? unit.build_time : "N/A" }}
-  </p>
+  <p><strong>Min. Required Age:</strong> {{ unit.age || "N/A" }}</p>
+  <p><strong>Wood Cost:</strong> {{ unit.cost?.Wood || "N/A" }}</p>
+  <p><strong>Food Cost:</strong> {{ unit.cost?.Food || "N/A" }}</p>
+  <p><strong>Gold Cost:</strong> {{ unit.cost?.Gold || "N/A" }}</p>
+  <p><strong>Build Time:</strong> {{ unit.build_time || "N/A" }}</p>
   <p>
     <strong>Reload Time:</strong>
-    {{ unit.reload_time ? unit.reload_time : "N/A" }}
+    {{ unit.reload_time || "N/A" }}
   </p>
-  <p>
-    <strong>Hit Point:</strong> {{ unit.hit_points ? unit.hit_points : "N/A" }}
-  </p>
-  <p><strong>Attack:</strong> {{ unit.attack ? unit.attack : "N/A" }}</p>
-  <p><strong>Accuracy:</strong> {{ unit.accuracy ? unit.accuracy : "N/A" }}</p>
+  <p><strong>Hit Point:</strong> {{ unit.hit_points || "N/A" }}</p>
+  <p><strong>Attack:</strong> {{ unit.attack || "N/A" }}</p>
+  <p><strong>Accuracy:</strong> {{ unit.accuracy || "N/A" }}</p>
 </section>
