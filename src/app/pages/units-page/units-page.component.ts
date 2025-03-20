@@ -86,19 +86,41 @@ export class UnitsPageComponent implements OnInit {
 
   onAgeChange(selectedAge: Age) {
     this.selectedAge = selectedAge;
-    this.filterUnitsByAge();
+    this.filterUnits();
   }
 
-  filterUnitsByAge() {
-    if (this.selectedAge === Age.All) {
-      this.unitList = this.allUnitList;
-    } else {
-      // Displaying the units if it can be created by selected age or its previous ages
+  onCostFilterChange() {
+    this.filterUnits();
+  }
+
+  filterUnits() {
+    let filteredUnits = this.allUnitList;
+
+    if (this.selectedAge !== Age.All) {
       const ageIndex = AGE_LIST.indexOf(this.selectedAge);
-      this.unitList = this.allUnitList.filter((unit) => {
+      filteredUnits = filteredUnits.filter((unit) => {
         const unitAgeIndex = AGE_LIST.indexOf(unit.age);
         return unitAgeIndex <= ageIndex;
       });
     }
+
+    if (this.costFilters.food && this.costValues.food) {
+      filteredUnits = filteredUnits.filter(
+        (unit) => unit.cost?.Food <= this.costValues.food
+      );
+    }
+    if (this.costFilters.wood && this.costValues.wood) {
+      filteredUnits = filteredUnits.filter(
+        (unit) => unit.cost?.Wood <= this.costValues.wood
+      );
+    }
+
+    if (this.costFilters.gold && this.costValues.gold) {
+      filteredUnits = filteredUnits.filter(
+        (unit) => unit.cost?.Gold <= this.costValues.gold
+      );
+    }
+
+    this.unitList = filteredUnits;
   }
 }

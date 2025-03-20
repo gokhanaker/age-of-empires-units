@@ -31,6 +31,7 @@
               [(ngModel)]="costValues.food"
               min="0"
               max="200"
+              (input)="onCostFilterChange()"
             />
             <span>{{ costValues.food }}</span>
           </div>
@@ -45,6 +46,7 @@
               [(ngModel)]="costValues.wood"
               min="0"
               max="200"
+              (input)="onCostFilterChange()"
             />
             <span>{{ costValues.wood }}</span>
           </div>
@@ -59,6 +61,7 @@
               [(ngModel)]="costValues.gold"
               min="0"
               max="200"
+              (input)="onCostFilterChange()"
             />
             <span>{{ costValues.gold }}</span>
           </div>
