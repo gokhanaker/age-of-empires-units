@@ -1,1 +1,17 @@
-<p>unit-detail works!</p>
+<navbar></navbar>
+
+<section class="unit-detail">
+  <h2>{{ pageTitle }}</h2>
+  <p><strong>Id:</strong> {{ unit.id }}</p>
+  <p><strong>Name:</strong> {{ unit.name }}</p>
+  <p><strong>Description:</strong> {{ unit.description }}</p>
+  <p><strong>Min. Required Age:</strong> {{ unit.age }}</p>
+  <p><strong>Wood Cost:</strong> {{ unit.cost?.Wood }}</p>
+  <p><strong>Food Cost:</strong> {{ unit.cost?.Food }}</p>
+  <p><strong>Gold Cost:</strong> {{ unit.cost?.Gold }}</p>
+  <p><strong>Build Time:</strong> {{ unit.build_time }}</p>
+  <p><strong>Reload Time:</strong> {{ unit.reload_time }}</p>
+  <p><strong>Hit Point:</strong> {{ unit.hit_points }}</p>
+  <p><strong>Attack:</strong> {{ unit.attack }}</p>
+  <p><strong>Accuracy:</strong> {{ unit.accuracy }}</p>
+</section>

@@ -8,7 +8,7 @@ export interface Unit {
     Wood: number;
     Gold: number;
     Food: number;
-  };
+  } | null;
   build_time: number;
   reload_time: number;
   attack_delay: number;
