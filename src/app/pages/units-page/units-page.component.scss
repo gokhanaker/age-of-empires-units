@@ -35,3 +35,12 @@ main h1 {
   width: 100%;
   max-width: 1000px;
 }
+
+.units-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.units-container a:visited {
+  color: #007bff !important;
+}
