@@ -40,20 +40,22 @@ import { RouterModule } from '@angular/router';
 })
 export class UnitsPageComponent implements OnInit {
   readonly pageTitle = 'Units Page';
+  error: any = null;
 
   allUnitList: Unit[] = [];
   unitList: Unit[] = [];
 
-  error: any = null;
   selectedAge: Age = Age.All;
   ages = Object.values(Age);
 
+  // Default states for cost filters
   costFilters = {
     food: false,
     wood: false,
     gold: false,
   };
 
+  // Default values for cost filters
   costValues = {
     food: 0,
     wood: 0,
@@ -94,33 +96,11 @@ export class UnitsPageComponent implements OnInit {
   }
 
   filterUnits() {
-    let filteredUnits = this.allUnitList;
-
-    if (this.selectedAge !== Age.All) {
-      const ageIndex = AGE_LIST.indexOf(this.selectedAge);
-      filteredUnits = filteredUnits.filter((unit) => {
-        const unitAgeIndex = AGE_LIST.indexOf(unit.age);
-        return unitAgeIndex <= ageIndex;
-      });
-    }
-
-    if (this.costFilters.food && this.costValues.food) {
-      filteredUnits = filteredUnits.filter(
-        (unit) => unit.cost?.Food <= this.costValues.food
-      );
-    }
-    if (this.costFilters.wood && this.costValues.wood) {
-      filteredUnits = filteredUnits.filter(
-        (unit) => unit.cost?.Wood <= this.costValues.wood
-      );
-    }
-
-    if (this.costFilters.gold && this.costValues.gold) {
-      filteredUnits = filteredUnits.filter(
-        (unit) => unit.cost?.Gold <= this.costValues.gold
-      );
-    }
-
-    this.unitList = filteredUnits;
+    this.unitList = this.unitService.filterUnits(
+      this.allUnitList,
+      this.selectedAge,
+      this.costFilters,
+      this.costValues
+    );
   }
 }
