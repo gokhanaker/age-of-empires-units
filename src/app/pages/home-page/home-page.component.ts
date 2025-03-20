@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { NavbarComponent } from '@components/navbar/navbar.component';
 
 @Component({
   selector: 'home-page',

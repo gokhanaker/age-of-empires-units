@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
-import { loadUnitsSuccess, loadUnitsFailure } from '../state/unit.actions';
-import { Unit } from '../models/unit.model';
-import { UnitState } from '../state/unit.state';
+import { loadUnitsSuccess, loadUnitsFailure } from '@state/unit.actions';
+import { Unit } from '@models/unit.model';
+import { UnitState } from '@state/unit.state';
 
 @Injectable({ providedIn: 'root' })
 export class UnitService {

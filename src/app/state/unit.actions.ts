@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Unit } from '../models/unit.model';
+import { Unit } from '@models/unit.model';
 
 export const loadUnitsSuccess = createAction(
   '[Units] Load Units Success',

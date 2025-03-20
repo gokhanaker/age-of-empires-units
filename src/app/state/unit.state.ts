@@ -1,4 +1,4 @@
-import { Unit } from '../models/unit.model';
+import { Unit } from '@models/unit.model';
 
 export interface UnitState {
   units: Unit[];
