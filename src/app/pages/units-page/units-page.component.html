@@ -1,0 +1,103 @@
+<navbar></navbar>
+
+<main>
+  <h1>{{ pageTitle }}</h1>
+  <div *ngIf="error; else showUnits">
+    <h1>Error to display units!</h1>
+  </div>
+
+  <ng-template #showUnits>
+    <section class="filters-container">
+      <p>Ages:</p>
+      <mat-button-toggle-group
+        class="ages-filter-container"
+        [(value)]="selectedAge"
+        (change)="onAgeChange($event.value)"
+        appearance="standard"
+      >
+        <mat-button-toggle *ngFor="let age of ages" [value]="age">{{
+          age
+        }}</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <p>Unit Cost:</p>
+      <div class="cost-filter-container">
+        <div class="cost-filter">
+          <mat-checkbox [(ngModel)]="costFilters.food">Food</mat-checkbox>
+          <div *ngIf="costFilters.food">
+            <label>Food:</label>
+            <input
+              type="range"
+              [(ngModel)]="costValues.food"
+              min="0"
+              max="200"
+            />
+            <span>{{ costValues.food }}</span>
+          </div>
+        </div>
+
+        <div class="cost-filter">
+          <mat-checkbox [(ngModel)]="costFilters.wood">Wood</mat-checkbox>
+          <div *ngIf="costFilters.wood">
+            <label>Wood:</label>
+            <input
+              type="range"
+              [(ngModel)]="costValues.wood"
+              min="0"
+              max="200"
+            />
+            <span>{{ costValues.wood }}</span>
+          </div>
+        </div>
+
+        <div class="cost-filter">
+          <mat-checkbox [(ngModel)]="costFilters.gold">Gold</mat-checkbox>
+          <div *ngIf="costFilters.gold">
+            <label>Gold:</label>
+            <input
+              type="range"
+              [(ngModel)]="costValues.gold"
+              min="0"
+              max="200"
+            />
+            <span>{{ costValues.gold }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="unitList && unitList.length" class="units-container">
+      <table mat-table [dataSource]="unitList" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let unit">{{ unit.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let unit">{{ unit.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef>Age</th>
+          <td mat-cell *matCellDef="let unit">{{ unit.age }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell *matHeaderCellDef>Costs</th>
+          <td mat-cell *matCellDef="let unit">
+            <ng-container *ngIf="unit.cost; else noCost">
+              <span *ngFor="let key of objectKeys(unit.cost)">
+                {{ key }}: {{ unit.cost[key] }}
+              </span>
+            </ng-container>
+            <ng-template #noCost>N/A</ng-template>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </section>
+  </ng-template>
+</main>
