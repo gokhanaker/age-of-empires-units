@@ -1,4 +1,4 @@
-$leftMarginSpacing: 80px;
+$leftMarginSpacing: 120px;
 
 main h1 {
   font-size: 2rem;
@@ -34,6 +34,10 @@ main h1 {
   margin-left: $leftMarginSpacing;
   width: 100%;
   max-width: 1000px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: block;
+  padding-bottom: 50px;
 }
 
 .units-container a {

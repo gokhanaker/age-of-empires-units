@@ -28,6 +28,7 @@ export class UnitService {
   ): Unit[] {
     let filteredUnits = allUnits;
 
+    // Filter By Age
     if (selectedAge !== Age.All) {
       const ageIndex = AGE_LIST.indexOf(selectedAge);
       filteredUnits = filteredUnits.filter(
@@ -35,6 +36,7 @@ export class UnitService {
       );
     }
 
+    // Filter By Cost
     if (costFilters.food && costValues.food >= 0) {
       filteredUnits = filteredUnits.filter(
         (unit) =>

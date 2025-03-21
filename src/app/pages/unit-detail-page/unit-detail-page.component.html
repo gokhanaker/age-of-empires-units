@@ -3,7 +3,7 @@
 <h1>{{ pageTitle }}</h1>
 <section class="unit-detail">
   <p><strong>Id:</strong> {{ unit.id }}</p>
-  <p><strong>Name:</strong> {{ unit.name || "N/A" }}</p>
+  <p><strong>Name:</strong> {{ unit.name }}</p>
   <p>
     <strong>Description:</strong>
     {{ unit.description || "N/A" }}
@@ -17,7 +17,7 @@
     <strong>Reload Time:</strong>
     {{ unit.reload_time || "N/A" }}
   </p>
-  <p><strong>Hit Point:</strong> {{ unit.hit_points || "N/A" }}</p>
+  <p><strong>Hit Points:</strong> {{ unit.hit_points || "N/A" }}</p>
   <p><strong>Attack:</strong> {{ unit.attack || "N/A" }}</p>
   <p><strong>Accuracy:</strong> {{ unit.accuracy || "N/A" }}</p>
 </section>

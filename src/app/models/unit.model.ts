@@ -18,5 +18,8 @@ export interface Unit {
   range: number;
   attack: number;
   armor: string;
+  attack_bonus: string[];
+  armor_bonus: string[];
+  search_radius: number;
   accuracy: string;
 }
