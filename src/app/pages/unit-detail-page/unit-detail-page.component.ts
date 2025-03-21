@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '@components/navbar/navbar.component';
 import { Unit } from '@models/unit.model';
@@ -12,7 +12,7 @@ import { UnitState } from '@state/unit.state';
   templateUrl: './unit-detail-page.component.html',
   styleUrl: './unit-detail-page.component.scss',
 })
-export class UnitDetailPageComponent {
+export class UnitDetailPageComponent implements OnInit {
   readonly pageTitle = 'Unit Detail Page';
   unitId: number | undefined;
   unit!: Unit;

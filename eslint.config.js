@@ -14,19 +14,12 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
-      "@angular-eslint/directive-selector": [
-        "error",
-        { type: "attribute", prefix: "app", style: "camelCase" },
-      ],
-      "@angular-eslint/component-selector": [
-        "error",
-        { type: "element", prefix: "app", style: "kebab-case" },
-      ],
       semi: ["error", "always"], // Require semicolons
       eqeqeq: ["error", "always"], // Enforce strict equality (===)
-      "no-console": "warn", // Allow console logs but warn about them
+      "no-console": ["error", { allow: ["warn", "error"] }], // No console log statements
+      "no-debugger": "error", // No debugger statements
       "prefer-const": "error", // Prefer const over let when possible
-      "no-unused-vars": "warn", // Warn about unused variables
+      "@typescript-eslint/no-explicit-any": "warn", // Avoid using the any type
     },
   },
   {

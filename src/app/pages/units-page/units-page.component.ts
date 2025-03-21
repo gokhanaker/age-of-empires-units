@@ -8,7 +8,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { Unit } from '@models/unit.model';
-import { Age, AGE_LIST } from '@models/ages.model';
+import { Age } from '@models/ages.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,7 +40,7 @@ import { RouterModule } from '@angular/router';
 })
 export class UnitsPageComponent implements OnInit {
   readonly pageTitle = 'Units Page';
-  error: any = null;
+  error: string | null = null;
 
   allUnitList: Unit[] = [];
   unitList: Unit[] = [];
@@ -64,7 +64,7 @@ export class UnitsPageComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'age', 'cost'];
 
-  objectKeys(obj: any): string[] {
+  objectKeys(obj: object): string[] {
     return obj ? Object.keys(obj) : [];
   }
 
@@ -81,7 +81,7 @@ export class UnitsPageComponent implements OnInit {
       this.unitList = this.allUnitList;
     });
 
-    this.store.select(selectError).subscribe((error: any) => {
+    this.store.select(selectError).subscribe((error: string | null) => {
       this.error = error;
     });
   }
