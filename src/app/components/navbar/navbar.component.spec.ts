@@ -3,7 +3,6 @@ import { NavbarComponent } from './navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { of } from 'rxjs';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -21,8 +20,7 @@ describe('NavbarComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            params: of({}),
-            snapshot: { paramMap: { get: () => null } },
+            params: ['home', 'units'],
           },
         },
       ],
