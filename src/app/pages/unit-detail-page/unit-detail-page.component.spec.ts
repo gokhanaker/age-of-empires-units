@@ -41,9 +41,9 @@ describe('UnitDetailPageComponent', () => {
 
   it('should select the correct unit from the store', () => {
     spyOn(mockStore, 'select').and.returnValue(of(mockUnits[0]));
-
     component.ngOnInit();
     fixture.detectChanges();
+
     expect(component.unit).toEqual(mockUnits[0]);
     expect(component.unitId).toEqual(1);
     expect(mockStore.select).toHaveBeenCalled();

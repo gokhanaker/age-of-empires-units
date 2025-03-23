@@ -70,15 +70,15 @@ describe('UnitService', () => {
       expect(filteredUnits[0].name).toBe('Archer');
     });
 
-    it('should filter units by food cost', () => {
+    it('should filter units by cost', () => {
       const filteredUnits = service.filterUnits(
         mockUnits,
-        Age.Feudal,
-        { food: true, wood: false, gold: false },
-        { food: 50, wood: 0, gold: 0 }
+        Age.Castle,
+        { food: true, wood: true, gold: true },
+        { food: 60, wood: 50, gold: 75 }
       );
       expect(filteredUnits.length).toBe(1);
-      expect(filteredUnits[0].name).toBe('Archer');
+      expect(filteredUnits[0].name).toBe('Knight');
     });
 
     it('should return all units if no filters are applied', () => {

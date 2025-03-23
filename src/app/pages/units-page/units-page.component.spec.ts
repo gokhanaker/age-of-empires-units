@@ -23,10 +23,8 @@ describe('UnitsPageComponent', () => {
   let mockUnitService: jasmine.SpyObj<UnitService>;
 
   const initialState = {
-    units: {
-      allUnits: [],
-      error: null,
-    },
+    units: [],
+    error: null,
   };
 
   beforeEach(async () => {
