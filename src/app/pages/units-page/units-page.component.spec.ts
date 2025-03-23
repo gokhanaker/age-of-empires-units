@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UnitsPageComponent } from './units-page.component';
-import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 import { UnitService } from '@services/unit.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
@@ -19,7 +19,6 @@ import { CommonModule } from '@angular/common';
 describe('UnitsPageComponent', () => {
   let component: UnitsPageComponent;
   let fixture: ComponentFixture<UnitsPageComponent>;
-  let mockStore: MockStore;
   let mockUnitService: jasmine.SpyObj<UnitService>;
 
   const initialState = {
@@ -62,7 +61,6 @@ describe('UnitsPageComponent', () => {
       ],
     }).compileComponents();
 
-    mockStore = TestBed.inject(MockStore);
     fixture = TestBed.createComponent(UnitsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

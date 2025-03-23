@@ -6,6 +6,7 @@ const angular = require("angular-eslint");
 module.exports = tseslint.config(
   {
     files: ["**/*.ts"],
+    ignores: ["coverage/**", "**/*.js"],
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
@@ -24,6 +25,7 @@ module.exports = tseslint.config(
   },
   {
     files: ["**/*.html"],
+    ignores: ["coverage/**", "**/*.js"],
     extends: [
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,

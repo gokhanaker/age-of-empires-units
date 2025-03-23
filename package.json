@@ -6,7 +6,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --code-coverage",
-    "lint": "eslint . --ext .ts,.html"
+    "lint": "eslint . --ext .ts"
   },
   "private": true,
   "dependencies": {

@@ -1,5 +1,5 @@
 import { mockUnits } from '../test-helper/test-helper';
-import { selectAllUnits, selectError, selectUnitById } from './unit.selectors';
+import { selectAllUnits, selectError } from './unit.selectors';
 import { UnitState } from './unit.state';
 
 describe('Unit Selectors', () => {
